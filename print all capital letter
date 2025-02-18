@@ -1,0 +1,25 @@
+.model small
+.stack 100h
+.data
+    MSG1 DB "ENTER THE 1ST NUMBER :","$"
+    MSG2 DB 10,13, "ENTER THE 2ND NUMBER :","$"
+    MSG3 DB 10,13, "THE LARGEST VALUE :" , "$"
+.CODE
+MAIN PROC
+    MOV AX,@DATA ;INITIALIZE THE DATA SEGMENT
+    MOV DS,AX
+    
+   mov cl,26
+   mov dl,65
+   loop1:
+   mov ah,02
+   int 21h
+   inc dl
+   dec cl
+   jnz loop1
+             
+ 
+ MOV AH,4CH
+ INT 21H
+    MAIN ENDP
+END MAIN
