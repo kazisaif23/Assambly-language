@@ -1,0 +1,60 @@
+.model small
+.stack 100h
+.data
+    MSG1 DB "ENTER THE 1ST NUMBER :","$"
+    MSG2 DB 10,13, "ENTER THE 2ND NUMBER :","$"
+    MSG3 DB 10,13, "THE LARGEST VALUE :" , "$"
+.CODE
+MAIN PROC
+    MOV AX,@DATA ;INITIALIZE THE DATA SEGMENT
+    MOV DS,AX
+    
+   ;PRINT MSG1
+   MOV DX,OFFSET MSG1
+   MOV AH,09H
+   INT 21H
+   
+   ;INPUT 1ST
+    MOV AH,01
+    INT 21H
+    MOV BL,AL
+    
+    ;PRINT MSG2
+    MOV DX,OFFSET MSG2
+    MOV AH,09H
+    INT 21H
+    
+    ;INTPUT 2ND NUMBER
+    MOV AH,01
+    INT 21H
+    MOV CL,AL
+    
+    ;COMPARE
+    CMP BL,CL
+    JG LARGEST1
+    JL LARGEST2
+    
+    LARGEST1:
+    MOV DX,OFFSET MSG3
+    MOV AH,09H
+    INT 21H
+    
+    MOV AH,02
+    MOV DL,BL
+    INT 21H
+    JMP END
+ 
+ LARGEST2:
+    MOV DX,OFFSET MSG3
+    MOV AH,09H
+    INT 21H 
+    
+    MOV AH,02
+    MOV DL,CL
+    INT 21H
+             
+ END:
+ MOV AH,4CH
+ INT 21H
+    MAIN ENDP
+END MAIN
