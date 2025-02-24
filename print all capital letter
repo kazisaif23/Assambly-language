@@ -3,9 +3,6 @@
 .DATA
 .CODE
 MAIN PROC
-    MOV AX,@DATA ;INITIALIZE THE DATA SEGMENT
-    MOV DS,AX
-    
    mov cl,26
    mov dl,65
    loop1:
