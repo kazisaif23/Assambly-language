@@ -4,7 +4,7 @@
 .CODE
 MAIN PROC
    mov cl,26
-   mov dl,97
+   mov dl,65
    loop1:
    mov ah,02
    int 21h
@@ -15,6 +15,25 @@ MAIN PROC
    INT 21H
    MOV DL,BL
    jnz loop1
+              
+   MOV AH,02
+   MOV DL,10
+   INT 21H
+   MOV DL,13
+   INT 21H
+   
+   mov cl,26
+   mov dl,97
+   loop2:
+   mov ah,02
+   int 21h
+   inc dl
+   dec cl
+   MOV BL,DL
+   MOV DL,32
+   INT 21H
+   MOV DL,BL
+   jnz loop2
              
  
  MOV AH,4CH
