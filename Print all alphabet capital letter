@@ -9,7 +9,11 @@ MAIN PROC
    mov ah,02
    int 21h
    inc dl
-   dec cl
+   dec cl 
+   MOV BL,DL
+    MOV DL,32
+    INT 21H
+    MOV DL,BL
    jnz loop1
              
  
